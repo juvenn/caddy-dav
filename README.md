@@ -1,11 +1,15 @@
-`caddy-dav` - Pre-built image for caddy bundled with webdav
+`caddy-dav` - Pre-built docker image for caddy+webdav
 ===
 
-![Docker Image](https://img.shields.io/docker/v/juvenn/caddy-dav?style=flat-square)
-![Docker Image Size ](https://img.shields.io/docker/image-size/juvenn/caddy-dav/2.7.4?style=flat-square)
-![Docker Pulls](https://img.shields.io/docker/pulls/juvenn/caddy-dave?style=flat-square)
+[![Docker Image](https://img.shields.io/docker/v/juvenn/caddy-dav?style=flat-square)](https://hub.docker.com/r/juvenn/caddy-dav/tags)
+![Docker Image Size ](https://img.shields.io/docker/image-size/juvenn/caddy-dav/2.7.5?style=flat-square)
+![Docker Pulls](https://img.shields.io/docker/pulls/juvenn/caddy-dav?style=flat-square)
 
 [Caddy](https://github.com/caddyserver/caddy) supports webdav very well with plugin [webdav](https://github.com/mholt/caddy-webdav), although it is not bundled by default. To facilitate deploying webdav on small devices, this image is built with webdav plugin.
+
+```
+docker pull juvenn/caddy-dav:2.7.5
+```
 
 Usage
 ---
@@ -23,7 +27,7 @@ media.local:8080 {
 }
 ```
 
-As webdav server, it works well now. But if you'd like to view it in browser, it displays xml, which is not friendly. To make it listing directory, we need to add `file_server browse` directive:
+As webdav server, it works well now. But if you'd like to view it in browser, it displays only xml, which is not friendly. To make it listing directory, we need to add `file_server browse` directive:
 
 ```
 {
