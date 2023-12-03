@@ -1,5 +1,7 @@
-ARG CADDY_VERSION=2.7.0
-FROM caddy:${CADDY_VERSION}-builder-alpine AS builder
+ARG CADDY_VERSION
+FROM --platform=$BUILDPLATFORM caddy:${CADDY_VERSION}-builder-alpine AS builder
+ARG TARGETPLATFORM
+ARG BUILDPLATFORM
 
 RUN xcaddy build ${CADDY_VERSION} \
   --with github.com/mholt/caddy-webdav
