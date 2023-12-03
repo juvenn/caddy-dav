@@ -4,6 +4,7 @@
 [![Docker Image](https://img.shields.io/docker/v/juvenn/caddy-dav?label=juvenn%2Fcaddy-dav&style=flat-square)](https://hub.docker.com/r/juvenn/caddy-dav/tags)
 ![Docker Image Size ](https://img.shields.io/docker/image-size/juvenn/caddy-dav/2.7.5?style=flat-square)
 ![Docker Pulls](https://img.shields.io/docker/pulls/juvenn/caddy-dav?style=flat-square)
+[![GitHub stars](https://img.shields.io/github/stars/juvenn/caddy-dav?style=flat-square&color=green)](https://github.com/juvenn/caddy-dav)
 
 [Caddy](https://github.com/caddyserver/caddy) supports webdav very well with plugin [webdav](https://github.com/mholt/caddy-webdav), although it is not bundled by default. To facilitate deploying webdav on small devices, this image is built with webdav plugin.
 
