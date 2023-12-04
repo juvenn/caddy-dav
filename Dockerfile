@@ -6,6 +6,6 @@ ARG BUILDPLATFORM
 RUN xcaddy build ${CADDY_VERSION} \
   --with github.com/mholt/caddy-webdav
 
-FROM caddy:${CADDY_VERSION}-alpine
+FROM --platform=$BUILDPLATFORM caddy:${CADDY_VERSION}-alpine
 
 COPY --from=builder /usr/bin/caddy /usr/bin/caddy
