@@ -1,11 +1,18 @@
+
+# https://www.docker.com/blog/faster-multi-platform-builds-dockerfile-cross-compilation-guide/
+
 ARG CADDY_VERSION
 FROM --platform=$BUILDPLATFORM caddy:${CADDY_VERSION}-builder-alpine AS builder
-ARG TARGETPLATFORM
 ARG BUILDPLATFORM
+ARG TARGETPLATFORM
+ARG TARGETOS TARGETARCH
 
-RUN xcaddy build ${CADDY_VERSION} \
+RUN echo "Building for $TARGETOS/$TARGETARCH on $BUILDPLATFORM"
+RUN GOOS=$TARGETOS GOARCH=$TARGETARCH xcaddy build ${CADDY_VERSION} \
   --with github.com/mholt/caddy-webdav
+RUN readlink -f caddy
+RUN cp ./caddy /usr/bin/caddy
 
-FROM --platform=$BUILDPLATFORM caddy:${CADDY_VERSION}-alpine
+FROM caddy:${CADDY_VERSION}-alpine
 
 COPY --from=builder /usr/bin/caddy /usr/bin/caddy
