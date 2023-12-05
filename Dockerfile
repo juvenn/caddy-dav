@@ -10,8 +10,7 @@ ARG TARGETOS TARGETARCH
 RUN echo "Building for $TARGETOS/$TARGETARCH on $BUILDPLATFORM"
 RUN GOOS=$TARGETOS GOARCH=$TARGETARCH xcaddy build ${CADDY_VERSION} \
   --with github.com/mholt/caddy-webdav
-RUN readlink -f caddy
-RUN cp ./caddy /usr/bin/caddy
+RUN echo "Built binary at: $(readlink -f caddy)"
 
 FROM caddy:${CADDY_VERSION}-alpine
 
