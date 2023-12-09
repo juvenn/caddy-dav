@@ -9,7 +9,7 @@
 [Caddy](https://github.com/caddyserver/caddy) supports webdav very well with plugin [webdav](https://github.com/mholt/caddy-webdav), although it is not bundled by default. To facilitate deploying webdav on small devices, this image is built with webdav plugin.
 
 ```
-docker pull juvenn/caddy-dav:2.7.5
+docker pull juvenn/caddy-dav:2.7.6
 ```
 
 Usage
