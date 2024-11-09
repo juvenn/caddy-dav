@@ -6,7 +6,10 @@
 ![Docker Pulls](https://img.shields.io/docker/pulls/juvenn/caddy-dav?style=flat-square)
 [![GitHub stars](https://img.shields.io/github/stars/juvenn/caddy-dav?style=flat-square&color=green)](https://github.com/juvenn/caddy-dav)
 
-[Caddy](https://github.com/caddyserver/caddy) supports webdav very well with plugin [webdav](https://github.com/mholt/caddy-webdav), although it is not bundled by default. To facilitate deploying webdav on small devices, this image is built with webdav plugin.
+[Caddy](https://github.com/caddyserver/caddy) supports webdav very well with
+plugin [webdav](https://github.com/mholt/caddy-webdav), although it is not
+bundled by default. The image is built with webdav plugin to facilitate
+deploying on small devices.
 
 ```
 docker pull juvenn/caddy-dav:2.7.6
@@ -28,7 +31,9 @@ media.local:8080 {
 }
 ```
 
-As webdav server, it works well now. But if you'd like to view it in browser, it displays only xml, which is not friendly. To make it listing directory, we need to add `file_server browse` directive:
+As webdav server, it works well now. But if you'd like to view it in browser, it
+displays only xml, which is not friendly. To make it listing directory, we need
+to add `file_server browse` directive:
 
 ```
 {
@@ -53,4 +58,6 @@ For more information, please refer to [caddy-webdav](https://github.com/mholt/ca
 Disclaimer
 ---
 
-This is just a re-packaging of caddy, all credits should to [@mholt](https://github.com/mholt/caddy-webdav) and [@caddyserver](https://github.com/caddyserver/caddy) team.
+This is just a re-packaging of caddy, all credits should go to
+[@mholt](https://github.com/mholt/caddy-webdav) and the
+[@caddyserver](https://github.com/caddyserver/caddy) team.
