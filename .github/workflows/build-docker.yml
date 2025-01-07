@@ -4,7 +4,6 @@ on:
   workflow_dispatch:
     inputs:
       CADDY_VERSION:
-        type: environment
         required: true
         description: "The caddy version, e.g. 2.9.0"
   push:
@@ -20,6 +19,8 @@ jobs:
 
       - name: Set the version
         shell: bash
+        env:
+          CADDY_VERSION: ${{ github.event.inputs.CADDY_VERSION }}
         if: env.CADDY_VERSION == ''
         run: |
           echo "CADDY_VERSION=$GITHUB_REF_NAME" >> $GITHUB_ENV
