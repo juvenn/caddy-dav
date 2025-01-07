@@ -1,6 +1,12 @@
 name: Build and publish to docker hub
 
 on:
+  workflow_dispatch:
+    inputs:
+      CADDY_VERSION:
+        type: environment
+        required: true
+        description: "The caddy version, e.g. 2.9.0"
   push:
     tags:
       - "[0-9]+.[0-9]+.[0-9]+"
