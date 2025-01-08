@@ -40,12 +40,18 @@ jobs:
         run: |
           echo "Build caddy version: ${{ env.CADDY_VERSION }}"
           echo "${{ secrets.DOCKER_PASSWORD }}" | docker login -u "${{ secrets.DOCKER_USERNAME }}" --password-stdin
+          IMAGE_TAG=${{ secrets.DOCKER_USERNAME }}/caddy-dav:${{ env.CADDY_VERSION }}
+          ALIAS_TAG=${{ secrets.DOCKER_USERNAME }}/caddy-dav:v${{ env.CADDY_VERSION }}
           docker buildx build \
             --build-arg CADDY_VERSION=${{ env.CADDY_VERSION }} \
             --platform linux/amd64,linux/arm64,linux/arm/v7 \
-            --tag ${{ secrets.DOCKER_USERNAME }}/caddy-dav:${{ env.CADDY_VERSION }} \
+            --tag $IMAGE_TAG \
             --push .
-      #
+          # tag and push v-prefix
+          docker tag $IMAGE_TAG $ALIAS_TAG
+          docker push $ALIAS_TAG
+
+      # update description with README
       - name: Docker Hub Description
         uses: peter-evans/dockerhub-description@v3
         with:
