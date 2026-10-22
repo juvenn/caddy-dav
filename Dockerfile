@@ -11,7 +11,7 @@ ARG TARGETARCH
 ARG TARGETVARIANT
 
 RUN echo "Building for $TARGETOS/$TARGETARCH on $BUILDPLATFORM"
-RUN GOOS=$TARGETOS GOARCH=$TARGETARCH GOARM=${TARGETVARIANT#v} xcaddy build ${CADDY_VERSION} \
+RUN GOOS=$TARGETOS GOARCH=$TARGETARCH GOARM=${TARGETVARIANT#v} xcaddy build "v${CADDY_VERSION}" \
   --with github.com/mholt/caddy-webdav
 RUN echo "Built binary at: $(readlink -f caddy)"
 
