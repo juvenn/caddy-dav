@@ -45,11 +45,9 @@ jobs:
           docker buildx build \
             --build-arg CADDY_VERSION=${{ env.CADDY_VERSION }} \
             --platform linux/amd64,linux/arm64,linux/arm/v7 \
-            --tag $IMAGE_TAG \
+            --tag "$IMAGE_TAG" \
+            --tag "$ALIAS_TAG" \
             --push .
-          # tag and push v-prefix
-          docker tag $IMAGE_TAG $ALIAS_TAG
-          docker push $ALIAS_TAG
 
       # update description with README
       - name: Docker Hub Description
